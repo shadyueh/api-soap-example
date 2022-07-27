@@ -1,48 +1,54 @@
-var soap = require('soap');
-var express = require('express');
-var fs = require('fs');
+import "dotenv/config";
 
-// the splitter function, used by the service
-function splitter_function(args) {
-    console.log('splitter_function');
-    var splitter = args.splitter;
-    var splitted_msg = args.message.split(splitter);
-    var result = [];
-    for(var i=0; i<splitted_msg.length; i++){
-      result.push(splitted_msg[i]);
-    }
-    return {
-        result: result
-    }
-}
+import express from "express";
+import http from "http";
 
-// the service
-var serviceObject = {
-  MessageSplitterService: {
+import routes from "./routes.js";
+
+class App {
+  constructor() {
+    // create express app
+    this.app = express();
+    this.server = http.Server(this.app);
+
+    // the service
+    this.serviceObject = {
+      MessageSplitterService: {
         MessageSplitterServiceSoapPort: {
-            MessageSplitter: splitter_function
+          MessageSplitter: this.splitter_function,
         },
         MessageSplitterServiceSoap12Port: {
-            MessageSplitter: splitter_function
-        }
+          MessageSplitter: this.splitter_function,
+        },
+      },
+    };
+
+    this.middlewares();
+
+    // setup routes
+    this.routes();
+  }
+
+  middlewares() {}
+
+  routes() {
+    this.app.use(routes);
+  }
+
+  // the splitter function, used by the service
+  splitter_function(args) {
+    let splitter = args.splitter;
+    let splitted_msg = args.message.split(splitter);
+    let result = [];
+
+    for (let i = 0; i < splitted_msg.length; i++) {
+      result.push(splitted_msg[i]);
     }
-};
 
-// load the WSDL file
-var xml = fs.readFileSync('service.wsdl', 'utf8');
-// create express app
-var app = express();
+    return {
+      result: result,
+    };
+  }
+}
 
-// root handler
-app.get('/', function (req, res) {
-  res.send('Node Soap Example!<br /><a href="https://github.com/macogala/node-soap-example#readme">Git README</a>');
-})
-
-// Launch the server and listen
-var port = 8000;
-app.listen(port, function () {
-  console.log('Listening on port ' + port);
-  var wsdl_path = "/wsdl";
-  soap.listen(app, wsdl_path, serviceObject, xml);
-  console.log("Check http://localhost:" + port + wsdl_path +"?wsdl to see if the service is working");
-});
+export default new App().server;
