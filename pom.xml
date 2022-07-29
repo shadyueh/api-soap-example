@@ -46,7 +46,6 @@
                 <version>2.7.2</version>
             </plugin>
         </plugins>
-        <finalName>parking-control</finalName>
     </build>
 
 </project>
