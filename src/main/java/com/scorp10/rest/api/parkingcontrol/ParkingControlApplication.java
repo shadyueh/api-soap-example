@@ -9,13 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ParkingControlApplication {
 
+	public static void main(String[] args) {
+		SpringApplication.run(ParkingControlApplication.class, args);
+	}
+
+	@GetMapping("/")
+	public String index(){
+		return "<h1>Olá, mundo!</h1>";
+	}
+
 	@GetMapping("/message")
 	public String getMessage(){
 		return "<h1>It's working!</h1><p>Spring Boot Stub App is OK!</p>";
 	}
 
-	public static void main(String[] args) {
-		SpringApplication.run(ParkingControlApplication.class, args);
-	}
 
 }
