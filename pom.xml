@@ -14,7 +14,7 @@
     <name>parking-control</name>
     <description>Parking project in Spring Boot</description>
     <properties>
-        <java.version>8</java.version>
+        <java.version>11</java.version>
     </properties>
     <dependencies>
         <dependency>
