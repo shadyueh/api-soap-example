@@ -6,15 +6,16 @@ services:
       context: .
     ports:
       - "8001:8080"
-  database:
-    image: postgres:alpine
-    restart: always
-    env_file: .env
-    ports:
-      - "5001:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
 
-volumes:
-  pgdata:
-    driver: local
+#  database:
+#    image: postgres:alpine
+#    restart: always
+#    env_file: .env
+#    ports:
+#      - "5001:5432"
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data
+
+#volumes:
+#  pgdata:
+#    driver: local
