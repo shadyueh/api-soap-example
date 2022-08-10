@@ -1,6 +1,6 @@
-package com.scorp10.rest.api.parkingcontrol.repositories;
+package br.gov.am.manaus.semef.tributario.api.rest.repositories;
 
-import com.scorp10.rest.api.parkingcontrol.models.ParkingSpotModel;
+import br.gov.am.manaus.semef.tributario.api.rest.models.ParkingSpotModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

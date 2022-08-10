@@ -1,13 +1,12 @@
-package com.scorp10.rest.api.parkingcontrol.services;
+package br.gov.am.manaus.semef.tributario.api.rest.services;
 
-import com.scorp10.rest.api.parkingcontrol.models.ParkingSpotModel;
-import com.scorp10.rest.api.parkingcontrol.repositories.ParkingSpotRepository;
+import br.gov.am.manaus.semef.tributario.api.rest.models.ParkingSpotModel;
+import br.gov.am.manaus.semef.tributario.api.rest.repositories.ParkingSpotRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 

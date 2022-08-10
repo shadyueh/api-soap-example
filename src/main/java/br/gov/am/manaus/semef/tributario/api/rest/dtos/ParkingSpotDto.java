@@ -1,4 +1,4 @@
-package com.scorp10.rest.api.parkingcontrol.dtos;
+package br.gov.am.manaus.semef.tributario.api.rest.dtos;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

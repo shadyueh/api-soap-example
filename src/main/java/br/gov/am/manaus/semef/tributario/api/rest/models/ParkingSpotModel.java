@@ -1,4 +1,4 @@
-package com.scorp10.rest.api.parkingcontrol.models;
+package br.gov.am.manaus.semef.tributario.api.rest.models;
 
 
 import javax.persistence.*;

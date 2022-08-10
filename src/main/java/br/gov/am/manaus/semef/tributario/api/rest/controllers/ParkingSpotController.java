@@ -1,8 +1,8 @@
-package com.scorp10.rest.api.parkingcontrol.controllers;
+package br.gov.am.manaus.semef.tributario.api.rest.controllers;
 
-import com.scorp10.rest.api.parkingcontrol.dtos.ParkingSpotDto;
-import com.scorp10.rest.api.parkingcontrol.models.ParkingSpotModel;
-import com.scorp10.rest.api.parkingcontrol.services.ParkingSpotService;
+import br.gov.am.manaus.semef.tributario.api.rest.dtos.ParkingSpotDto;
+import br.gov.am.manaus.semef.tributario.api.rest.models.ParkingSpotModel;
+import br.gov.am.manaus.semef.tributario.api.rest.services.ParkingSpotService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -44,7 +43,7 @@ public class ParkingSpotController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking Spot already registered for this apartment/block!");
         }
 
-        var parkingSpotModel = new ParkingSpotModel();
+        ParkingSpotModel parkingSpotModel = new ParkingSpotModel();
         // Converte o DTO JSON em Model Object
         BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel);
         parkingSpotModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
@@ -83,7 +82,7 @@ public class ParkingSpotController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
         }
 
-        var parkingSpotModel = parkingSpotModelOptional.get();
+        ParkingSpotModel parkingSpotModel = parkingSpotModelOptional.get();
         BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel);
         parkingSpotModel.setId(parkingSpotModelOptional.get().getId());
         parkingSpotModel.setRegistrationDate(parkingSpotModelOptional.get().getRegistrationDate());

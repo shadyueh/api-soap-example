@@ -1,4 +1,4 @@
-package com.scorp10.rest.api.parkingcontrol.configs;
+package br.gov.am.manaus.semef.tributario.api.rest.configs;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

@@ -1,10 +1,10 @@
-package com.scorp10.rest.api.parkingcontrol;
+package br.gov.am.manaus.semef.tributario.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ParkingControlApplicationTests {
+class APIControlApplicationTests {
 
 	@Test
 	void contextLoads() {
