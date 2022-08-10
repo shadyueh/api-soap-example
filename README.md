@@ -7,7 +7,7 @@ de [Michelli Brito](https://www.youtube.com/watch?v=LXRU-Z36GEU&ab_channel=Miche
 
 ## Gerar o arquivo .jar da aplicação
 
-Execute a fase maven package para gerar o snapshot da aplicação
+Execute a fase maven `package` para gerar o snapshot da aplicação
 
 ## Executando o projeto com docker-compose
 Para iniciar o container:
@@ -45,7 +45,13 @@ Teste se o projeto está executando acessando o endpoint criado na app.
 
 http://localhost:8080/message
 
+Para testar a respsta SOAP, acesse
+
+http://localhost:8080/ws/country.wsdl
+
 ## Referências
 [Curso de Spring Boot 2022](https://www.youtube.com/watch?v=LXRU-Z36GEU&ab_channel=MichelliBrito) de Michelli Brito
 
 [Dockerizing your Spring Boot Application](https://www.youtube.com/watch?v=e3YERpG2rMs&ab_channel=JavaTechie) by Java Techie
+
+[Creating a SOAP Web Service with Spring](https://www.baeldung.com/spring-boot-soap-web-service) by Baeldung
