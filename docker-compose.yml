@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   server:
-    image: springboot/parking-control
+    image: semef/java-8u342-jre
     build:
       context: .
     ports:

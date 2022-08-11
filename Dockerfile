@@ -1,4 +1,4 @@
-FROM amazoncorretto:11-alpine3.15-jdk
+FROM amazoncorretto:8u342-alpine3.15-jre
 
 # Cria grupo e usuário 'spring' para aplicação (secutity improving)
 RUN addgroup -S spring && adduser -S spring -G spring
