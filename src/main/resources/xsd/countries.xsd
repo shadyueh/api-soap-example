@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://api.tributario.semef.manaus.am.gov.br/soap/models"
-           targetNamespace="http://api.tributario.semef.manaus.am.gov.br/soap/models" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://api.tributario.semef.manaus.am.gov.br/soap/models"
+           targetNamespace="http://api.tributario.semef.manaus.am.gov.br/soap/models"
+           elementFormDefault="qualified">
 
     <xs:element name="getCountryRequest">
         <xs:complexType>

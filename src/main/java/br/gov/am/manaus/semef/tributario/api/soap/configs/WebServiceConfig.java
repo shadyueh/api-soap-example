@@ -15,20 +15,23 @@ import org.springframework.xml.xsd.XsdSchema;
 @EnableWs
 @Configuration
 public class WebServiceConfig extends WsConfigurerAdapter {
+
+    public static final String NAMESPACE_URI = "http://api.tributario.semef.manaus.am.gov.br/soap/models";
+
     @Bean
-    public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
+    public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
-        return new ServletRegistrationBean(servlet, "/ws/*");
+        return new ServletRegistrationBean<>(servlet, "/ws/*");
     }
 
-    @Bean(name = "country")
+    @Bean(name = "countries")
     public DefaultWsdl11Definition countryDefinition(XsdSchema countriesSchema) {
         DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
         definition.setPortTypeName("CountriesPort");
         definition.setLocationUri("/ws");
-        definition.setTargetNamespace(countriesSchema.getTargetNamespace());
+        definition.setTargetNamespace(NAMESPACE_URI);
         definition.setSchema(countriesSchema);
         return definition;
     }
