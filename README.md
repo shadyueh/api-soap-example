@@ -41,13 +41,51 @@ Inicie o container usando a imagem criada com a app instalada.
   docker run -p 8080:8080 springboot/parking-control
 ```
 
-Teste se o projeto está executando acessando o endpoint criado na app.
+## Testando a aplicação
+Teste se o projeto REST está executando acessando o endpoint criado na app.
 
 http://localhost:8080/message
 
-Para testar a respsta SOAP, acesse
+Para testar a app SOAP, acesse
 
 http://localhost:8080/ws/country.wsdl
+
+Para testar uma requisição SOAP, no Insomnia ou Postman
+
+1. Crie uma nova requisição `POST` e insira a URL do serviço: `http://localhost:8080/ws`
+2. Altere o tipo do Body para XML e insira a seguinte requisição:
+```xml
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:gs="http://api.tributario.semef.manaus.am.gov.br/soap/models">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <gs:getCountryRequest>
+            <gs:name>Spain</gs:name>
+        </gs:getCountryRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
+```
+3. Defina o Content-Type para text/xml  no Header: 
+`Content-Type: text/xml`
+
+O serviço deverá retornar a seguinte response
+```xml
+<SOAP-ENV:Envelope
+	xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>
+		<ns2:getCountryResponse
+			xmlns:ns2="http://api.tributario.semef.manaus.am.gov.br/soap/models">
+			<ns2:country>
+				<ns2:name>Spain</ns2:name>
+				<ns2:population>46704314</ns2:population>
+				<ns2:capital>Madrid</ns2:capital>
+				<ns2:currency>EUR</ns2:currency>
+			</ns2:country>
+		</ns2:getCountryResponse>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
 
 ## Referências
 [Curso de Spring Boot 2022](https://www.youtube.com/watch?v=LXRU-Z36GEU&ab_channel=MichelliBrito) de Michelli Brito
@@ -55,3 +93,5 @@ http://localhost:8080/ws/country.wsdl
 [Dockerizing your Spring Boot Application](https://www.youtube.com/watch?v=e3YERpG2rMs&ab_channel=JavaTechie) by Java Techie
 
 [Creating a SOAP Web Service with Spring](https://www.baeldung.com/spring-boot-soap-web-service) by Baeldung
+
+[Producing a SOAP web service](https://spring.io/guides/gs/producing-web-service/) by Spring
