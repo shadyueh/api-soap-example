@@ -24,13 +24,13 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     }
 
     @Bean(name = "country")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
-        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("CountriesPort");
-        wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://api.semef.manaus.am.gov.br/models/soap");
-        wsdl11Definition.setSchema(countriesSchema);
-        return wsdl11Definition;
+    public DefaultWsdl11Definition countryDefinition(XsdSchema countriesSchema) {
+        DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
+        definition.setPortTypeName("CountriesPort");
+        definition.setLocationUri("/ws");
+        definition.setTargetNamespace(countriesSchema.getTargetNamespace());
+        definition.setSchema(countriesSchema);
+        return definition;
     }
 
     @Bean
