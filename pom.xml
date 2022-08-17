@@ -81,7 +81,7 @@
                     <sources>
                         <source>${project.basedir}/src/main/resources/xsd/</source>
                     </sources>
-                    <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+                    <packageName>br.gov.am.manaus.semef.tributario.ws</packageName>
                     <clearOutputDir>false</clearOutputDir>
                 </configuration>
             </plugin>

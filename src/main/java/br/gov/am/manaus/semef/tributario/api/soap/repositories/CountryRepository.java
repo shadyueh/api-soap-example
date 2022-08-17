@@ -1,7 +1,7 @@
 package br.gov.am.manaus.semef.tributario.api.soap.repositories;
 
-import br.gov.am.manaus.semef.tributario.api.soap.models.Country;
-import br.gov.am.manaus.semef.tributario.api.soap.models.Currency;
+import br.gov.am.manaus.semef.tributario.ws.Country;
+import br.gov.am.manaus.semef.tributario.ws.Currency;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
