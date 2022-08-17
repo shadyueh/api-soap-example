@@ -16,7 +16,7 @@ import org.springframework.xml.xsd.XsdSchema;
 @Configuration
 public class WebServiceConfig extends WsConfigurerAdapter {
 
-    public static final String NAMESPACE_URI = "http://api.tributario.semef.manaus.am.gov.br/soap/models";
+    public static final String NAMESPACE_URI = "http://api.tributario.semef.manaus.am.gov.br/soap/ws";
 
     @Bean
     public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext applicationContext) {
@@ -39,5 +39,19 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     @Bean
     public XsdSchema countriesSchema() {
         return new SimpleXsdSchema(new ClassPathResource("xsd/countries.xsd"));
+    }
+
+    @Bean(name = "articles")
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema articlesSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("ArticlesPort");
+        wsdl11Definition.setLocationUri("/ws/art");
+        wsdl11Definition.setTargetNamespace(NAMESPACE_URI);
+        wsdl11Definition.setSchema(articlesSchema);
+        return wsdl11Definition;
+    }
+    @Bean
+    public XsdSchema articlesSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/articles.xsd"));
     }
 }
