@@ -58,31 +58,38 @@ Para testar uma requisição SOAP, no Insomnia ou Postman
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:art="http://api.tributario.semef.manaus.am.gov.br/soap/ws">
     <soapenv:Header/>
     <soapenv:Body>
-        <art:getArticleByIdRequest>
-            <art:articleId>2</art:articleId>
-        </art:getArticleByIdRequest>
+        <art:getAllArticlesRequest/>
     </soapenv:Body>
-</soapenv:Envelope> 
+</soapenv:Envelope>
 ```
 3. Defina o Content-Type para text/xml  no Header: 
 `Content-Type: text/xml`
 
-O serviço deverá retornar a seguinte response
+O serviço deverá retornar a response com todos os artigos
 ```xml
 <SOAP-ENV:Envelope
-	xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
-	<SOAP-ENV:Header/>
-	<SOAP-ENV:Body>
-		<ns2:getCountryResponse
-			xmlns:ns2="http://api.tributario.semef.manaus.am.gov.br/soap/models">
-			<ns2:country>
-				<ns2:name>Spain</ns2:name>
-				<ns2:population>46704314</ns2:population>
-				<ns2:capital>Madrid</ns2:capital>
-				<ns2:currency>EUR</ns2:currency>
-			</ns2:country>
-		</ns2:getCountryResponse>
-	</SOAP-ENV:Body>
+        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:getAllArticlesResponse
+                xmlns:ns2="http://api.tributario.semef.manaus.am.gov.br/soap/ws">
+            <ns2:articleInfo>
+                <ns2:articleId>5</ns2:articleId>
+                <ns2:title>Update: Spring Boot Getting Started</ns2:title>
+                <ns2:category>Update: Spring Boot</ns2:category>
+            </ns2:articleInfo>
+            <ns2:articleInfo>
+                <ns2:articleId>4</ns2:articleId>
+                <ns2:title>Angular Tutorial</ns2:title>
+                <ns2:category>Angular</ns2:category>
+            </ns2:articleInfo>
+            <ns2:articleInfo>
+                <ns2:articleId>1</ns2:articleId>
+                <ns2:title>Java Concurrency</ns2:title>
+                <ns2:category>Java</ns2:category>
+            </ns2:articleInfo>
+        </ns2:getAllArticlesResponse>
+    </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
 ```
 
@@ -94,3 +101,5 @@ O serviço deverá retornar a seguinte response
 [Creating a SOAP Web Service with Spring](https://www.baeldung.com/spring-boot-soap-web-service) by Baeldung
 
 [Producing a SOAP web service](https://spring.io/guides/gs/producing-web-service/) by Spring
+
+[Spring Boot SOAP Web Service Example](https://www.concretepage.com/spring-boot/spring-boot-soap-web-service-example) by Arvind Rai
