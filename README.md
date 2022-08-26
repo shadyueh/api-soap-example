@@ -48,22 +48,21 @@ http://localhost:8080/message
 
 Para testar a app SOAP, acesse
 
-http://localhost:8080/ws/country.wsdl
+http://localhost:8080/ws/countries.wsdl
 
 Para testar uma requisição SOAP, no Insomnia ou Postman
 
 1. Crie uma nova requisição `POST` e insira a URL do serviço: `http://localhost:8080/ws`
 2. Altere o tipo do Body para XML e insira a seguinte requisição:
 ```xml
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                  xmlns:gs="http://api.tributario.semef.manaus.am.gov.br/soap/models">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:art="http://api.tributario.semef.manaus.am.gov.br/soap/ws">
     <soapenv:Header/>
     <soapenv:Body>
-        <gs:getCountryRequest>
-            <gs:name>Spain</gs:name>
-        </gs:getCountryRequest>
+        <art:getArticleByIdRequest>
+            <art:articleId>2</art:articleId>
+        </art:getArticleByIdRequest>
     </soapenv:Body>
-</soapenv:Envelope>
+</soapenv:Envelope> 
 ```
 3. Defina o Content-Type para text/xml  no Header: 
 `Content-Type: text/xml`
