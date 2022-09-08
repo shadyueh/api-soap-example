@@ -1,4 +1,4 @@
-package br.gov.am.manaus.semef.tributario.api.soap.models;
+package br.gov.am.manaus.semef.tributario.api.soap.entities;
 
 import java.io.Serializable;
 import javax.persistence.Column;

@@ -1,6 +1,6 @@
-package br.gov.am.manaus.semef.tributario.api.soap.service;
+package br.gov.am.manaus.semef.tributario.api.soap.services;
 
-import br.gov.am.manaus.semef.tributario.api.soap.models.ArticleModel;
+import br.gov.am.manaus.semef.tributario.api.soap.entities.ArticleModel;
 import br.gov.am.manaus.semef.tributario.api.soap.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

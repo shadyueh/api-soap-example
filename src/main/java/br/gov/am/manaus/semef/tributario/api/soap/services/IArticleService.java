@@ -1,7 +1,7 @@
-package br.gov.am.manaus.semef.tributario.api.soap.service;
+package br.gov.am.manaus.semef.tributario.api.soap.services;
 
 import java.util.List;
-import br.gov.am.manaus.semef.tributario.api.soap.models.ArticleModel;
+import br.gov.am.manaus.semef.tributario.api.soap.entities.ArticleModel;
 
 public interface IArticleService {
     List<ArticleModel> getAllArticles();

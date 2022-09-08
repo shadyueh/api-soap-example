@@ -1,8 +1,8 @@
 package br.gov.am.manaus.semef.tributario.api.soap.endpoints;
 
 import br.gov.am.manaus.semef.tributario.api.soap.configs.WebServiceConfig;
-import br.gov.am.manaus.semef.tributario.api.soap.models.ArticleModel;
-import br.gov.am.manaus.semef.tributario.api.soap.service.IArticleService;
+import br.gov.am.manaus.semef.tributario.api.soap.entities.ArticleModel;
+import br.gov.am.manaus.semef.tributario.api.soap.services.IArticleService;
 import br.gov.am.manaus.semef.tributario.ws.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
