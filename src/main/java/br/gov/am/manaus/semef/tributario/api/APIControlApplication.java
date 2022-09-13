@@ -14,12 +14,12 @@ public class APIControlApplication {
     }
 
     @GetMapping("/")
-    public String index(){
+    public String index() {
         return "<h1>API Control</h1>";
     }
 
     @GetMapping("/message")
-    public String getMessage(){
+    public String getMessage() {
         return "<h1>It's working!</h1><p>Spring Boot Stub App is OK!</p>";
     }
 }

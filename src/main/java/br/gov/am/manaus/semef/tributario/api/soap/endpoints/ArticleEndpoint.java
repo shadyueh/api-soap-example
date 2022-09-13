@@ -29,6 +29,7 @@ public class ArticleEndpoint {
         response.setArticleInfo(articleInfo);
         return response;
     }
+
     @PayloadRoot(namespace = WebServiceConfig.NAMESPACE_URI, localPart = "getAllArticlesRequest")
     @ResponsePayload
     public GetAllArticlesResponse getAllArticles() {
@@ -43,6 +44,7 @@ public class ArticleEndpoint {
         response.getArticleInfo().addAll(articleInfoList);
         return response;
     }
+
     @PayloadRoot(namespace = WebServiceConfig.NAMESPACE_URI, localPart = "addArticleRequest")
     @ResponsePayload
     public AddArticleResponse addArticle(@RequestPayload AddArticleRequest request) {
@@ -66,6 +68,7 @@ public class ArticleEndpoint {
         }
         return response;
     }
+
     @PayloadRoot(namespace = WebServiceConfig.NAMESPACE_URI, localPart = "updateArticleRequest")
     @ResponsePayload
     public UpdateArticleResponse updateArticle(@RequestPayload UpdateArticleRequest request) {
@@ -79,12 +82,13 @@ public class ArticleEndpoint {
         response.setServiceStatus(serviceStatus);
         return response;
     }
+
     @PayloadRoot(namespace = WebServiceConfig.NAMESPACE_URI, localPart = "deleteArticleRequest")
     @ResponsePayload
     public DeleteArticleResponse deleteArticle(@RequestPayload DeleteArticleRequest request) {
         ArticleModel article = articleService.getArticleById(request.getArticleId());
         ServiceStatus serviceStatus = new ServiceStatus();
-        if (article == null ) {
+        if (article == null) {
             serviceStatus.setStatusCode("FAIL");
             serviceStatus.setMessage("Content Not Available");
         } else {

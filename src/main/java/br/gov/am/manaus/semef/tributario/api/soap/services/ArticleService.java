@@ -18,14 +18,16 @@ public class ArticleService implements IArticleService {
         ArticleModel obj = articleRepository.findByArticleId(articleId);
         return obj;
     }
+
     @Override
-    public List<ArticleModel> getAllArticles(){
+    public List<ArticleModel> getAllArticles() {
         List<ArticleModel> list = new ArrayList<>();
         articleRepository.findAll().forEach(e -> list.add(e));
         return list;
     }
+
     @Override
-    public synchronized boolean addArticle(ArticleModel article){
+    public synchronized boolean addArticle(ArticleModel article) {
         List<ArticleModel> list = articleRepository.findByTitleAndCategory(article.getTitle(), article.getCategory());
         if (list.size() > 0) {
             return false;
@@ -34,10 +36,12 @@ public class ArticleService implements IArticleService {
             return true;
         }
     }
+
     @Override
     public void updateArticle(ArticleModel article) {
         articleRepository.save(article);
     }
+
     @Override
     public void deleteArticle(ArticleModel article) {
         articleRepository.delete(article);
