@@ -18,6 +18,18 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
     public static final String NAMESPACE_URI = "http://api.tributario.semef.manaus.am.gov.br/soap/ws";
 
+    // Loading schemas
+    @Bean
+    public XsdSchema articlesSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/articles.xsd"));
+    }
+
+    @Bean
+    public XsdSchema iptuDebitosSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/iptuDebitos.xsd"));
+    }
+
+    // Servlets registration
     @Bean
     public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
@@ -35,8 +47,15 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         wsdl11Definition.setSchema(articlesSchema);
         return wsdl11Definition;
     }
-    @Bean
-    public XsdSchema articlesSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("xsd/articles.xsd"));
+
+    @Bean(name = "iptuDebitos")
+    public DefaultWsdl11Definition IPTUDebitoWsdl11Definition(XsdSchema iptuDebitosSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("IPTUDebitosPort");
+        wsdl11Definition.setLocationUri("/ws/debitos");
+        wsdl11Definition.setTargetNamespace(NAMESPACE_URI);
+        wsdl11Definition.setSchema(iptuDebitosSchema);
+        return wsdl11Definition;
     }
+
 }
