@@ -25,8 +25,8 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     }
 
     @Bean
-    public XsdSchema iptuDebitosSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("xsd/iptuDebitos.xsd"));
+    public XsdSchema iptuConsultaDebitosSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/arrecadacaoConsultaService.xsd"));
     }
 
     // Servlets registration
@@ -48,13 +48,13 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return wsdl11Definition;
     }
 
-    @Bean(name = "iptuDebitos")
-    public DefaultWsdl11Definition IPTUDebitoWsdl11Definition(XsdSchema iptuDebitosSchema) {
+    @Bean(name = "arrecadacaoConsultaService")
+    public DefaultWsdl11Definition IPTUDebitoWsdl11Definition(XsdSchema iptuConsultaDebitosSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("IPTUDebitosPort");
-        wsdl11Definition.setLocationUri("/ws/debitos");
+        wsdl11Definition.setLocationUri("/ws/p");
         wsdl11Definition.setTargetNamespace(NAMESPACE_URI);
-        wsdl11Definition.setSchema(iptuDebitosSchema);
+        wsdl11Definition.setSchema(iptuConsultaDebitosSchema);
         return wsdl11Definition;
     }
 

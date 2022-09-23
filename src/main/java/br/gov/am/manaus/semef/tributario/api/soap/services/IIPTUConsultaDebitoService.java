@@ -4,7 +4,7 @@ import br.gov.am.manaus.semef.tributario.api.soap.entities.IPTUDebito;
 
 import java.util.List;
 
-public interface IIPTUDebitoService {
+public interface IIPTUConsultaDebitoService {
     List<IPTUDebito> getIPTUDebito(String cpf, String mesAnoExercicio);
     List<IPTUDebito> getAllDebitos();
 

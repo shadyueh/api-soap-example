@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class IPTUDebitoService implements IIPTUDebitoService {
+public class IPTUConsultaConsultaDebitoService implements IIPTUConsultaDebitoService {
 
     @Autowired
     private IPTUDebitoRepository iptuDebitoRepository;

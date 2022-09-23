@@ -1,0 +1,44 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://api.tributario.semef.manaus.am.gov.br/soap/ws"
+           targetNamespace="http://api.tributario.semef.manaus.am.gov.br/soap/ws"
+           elementFormDefault="qualified">
+
+    <!--    Status do serviço-->
+    <xs:complexType name="IPTUDebitoServiceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--    Atributos da entidade-->
+    <xs:complexType name="IPTUDebitoInfo">
+        <xs:sequence>
+            <xs:element name="debitoId" type="xs:long"/>
+            <xs:element name="imposto" type="xs:string"/>
+            <xs:element name="matricula" type="xs:string"/>
+            <xs:element name="ano" type="xs:string"/>
+            <xs:element name="numeroParcela" type="xs:int"/>
+            <xs:element name="dataVencimento" type="xs:string"/>
+            <xs:element name="codigoBarras" type="xs:string"/>
+            <xs:element name="valorOriginal" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getAllIPTUDebitosRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="prprtyEnrollment" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllIPTUDebitosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="iptuDebito" type="tns:IPTUDebitoInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
