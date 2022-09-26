@@ -20,11 +20,6 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
     // Loading schemas
     @Bean
-    public XsdSchema articlesSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("xsd/articles.xsd"));
-    }
-
-    @Bean
     public XsdSchema iptuConsultaDebitosSchema() {
         return new SimpleXsdSchema(new ClassPathResource("xsd/arrecadacaoConsultaService.xsd"));
     }
@@ -36,16 +31,6 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
         return new ServletRegistrationBean<>(servlet, "/ws/*");
-    }
-
-    @Bean(name = "articles")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema articlesSchema) {
-        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("ArticlesPort");
-        wsdl11Definition.setLocationUri("/ws/art");
-        wsdl11Definition.setTargetNamespace(NAMESPACE_URI);
-        wsdl11Definition.setSchema(articlesSchema);
-        return wsdl11Definition;
     }
 
     @Bean(name = "arrecadacaoConsultaService")
