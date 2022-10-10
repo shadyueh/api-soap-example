@@ -94,7 +94,13 @@
                     <xs:element name="prcgCd" type="xs:int" minOccurs="0"/>
                 </xs:sequence>
             </xs:complexType>
-            <xs:element name="IPTUTypeRequest" type="ns0:IPTUType"/>
+            <xs:element name="IPTUTypeRequest">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="ns0:IPTUType"/>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
             <xs:complexType name="IPTUType">
                 <xs:sequence>
                     <xs:element name="prprtyEnrollment" type="xs:string"
@@ -557,7 +563,13 @@
                                 minOccurs="0"/>
                 </xs:sequence>
             </xs:complexType>
-            <xs:element name="IPTUTypeResponse" type="ns1:IPTUType"/>
+            <xs:element name="IPTUTypeResponse">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="ns1:IPTUType"/>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
             <xs:complexType name="IPTUType">
                 <xs:complexContent>
                     <xs:extension
