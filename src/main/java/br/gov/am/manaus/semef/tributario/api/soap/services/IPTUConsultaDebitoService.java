@@ -1,6 +1,6 @@
 package br.gov.am.manaus.semef.tributario.api.soap.services;
 
-import br.gov.am.manaus.semef.tributario.api.soap.dtos.IPTUDebitoIdCodigoDTO;
+import br.gov.am.manaus.semef.tributario.api.soap.dtos.IPTUDebitoConsultaDTO;
 import br.gov.am.manaus.semef.tributario.api.soap.entities.IPTUDebito;
 import br.gov.am.manaus.semef.tributario.api.soap.repositories.IPTUDebitoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class IPTUConsultaConsultaDebitoService implements IIPTUConsultaDebitoService {
+public class IPTUConsultaDebitoService implements IIPTUConsultaDebitoService {
 
     @Autowired
     private IPTUDebitoRepository iptuDebitoRepository;
@@ -30,8 +30,8 @@ public class IPTUConsultaConsultaDebitoService implements IIPTUConsultaDebitoSer
     }
 
     @Override
-    public List<IPTUDebitoIdCodigoDTO> getDebitosByCodigoBarras(String barcode) {
-        List<IPTUDebitoIdCodigoDTO> list = new ArrayList<>();
+    public List<IPTUDebitoConsultaDTO> getDebitosByCodigoBarras(String barcode) {
+        List<IPTUDebitoConsultaDTO> list = new ArrayList<>();
         iptuDebitoRepository.findByCodigoBarras(barcode).forEach(e -> list.add(e));
         return list;
     }

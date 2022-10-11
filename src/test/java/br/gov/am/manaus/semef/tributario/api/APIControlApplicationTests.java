@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
-import br.gov.am.manaus.semef.tributario.api.soap.dtos.IPTUDebitoIdCodigoDTO;
+import br.gov.am.manaus.semef.tributario.api.soap.dtos.IPTUDebitoConsultaDTO;
 import br.gov.am.manaus.semef.tributario.api.soap.services.IIPTUConsultaDebitoService;
 
 @Sql({ "/data.sql" })
@@ -26,7 +26,7 @@ class APIControlApplicationTests {
 
 	@Test
 	void iptuDebitoDtoWorks() {
-		List<IPTUDebitoIdCodigoDTO> res = iptuDebitoService.getDebitosByCodigoBarras("678876678");
+		List<IPTUDebitoConsultaDTO> res = iptuDebitoService.getDebitosByCodigoBarras("678876678");
 		assertEquals(res.size(), 1);
 		assertNotNull(res.get(0).getDebitoId());
 	}
